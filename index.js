@@ -45,6 +45,11 @@ function counterMaker() {
 
 const counter1 = counterMaker();
 
+
+console.log(counter1());
+console.log(counter1());
+console.log(counter1());
+
 // counter2 code
 let count = 0;
 
@@ -52,7 +57,9 @@ function counter2() {
   return count++;
 }
 
-
+console.log(counter2())
+console.log(counter2())
+// console.log(counter2())
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
   1. Return a random whole number of points between 0 and 2 scored by one team in an inning
@@ -62,10 +69,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    const rand = Math.floor(Math.random() * 3);
+    return rand;
 }
-
+inning();
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -81,10 +89,19 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(randcb, innings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i < innings; i++){
+    homeScore = homeScore + randcb();
+    awayScore = awayScore + randcb();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
 }
-
+console.log(finalScore(inning, 9));
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
